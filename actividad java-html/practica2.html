@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resolución de problemas sobre Javascript con HTML</title>
+
+</head>
+<body>
+    <h1>Ejercicios</h1><br/>
+     <script> 
+//ejercicio 1
+    function convertirGradosCentigradosAGradosFahrenheint(){
+        let txt = document.getElementById("tempEntrada");
+        let temp = parseInt(txt.value);
+            return temp;   
+    }
+
+    function EscriData(nomZona, text){
+        document.getElementById(nomZona).innerHTML = text;
+    }
+
+    function paFahrenheint(){
+        let temp = convertirGradosCentigradosAGradosFahrenheint();
+        temp = ((5 / 9) * temp + 32);
+            EscriData('Zona1', temp + " ºF"); 
+            FaseTemperatura(temp);
+    } 
+
+    function FaseTemperatura(temperatura){
+        let cadena="-";
+            if ((temperatura >= 212)) cadena ="Punto de ebullición del agua";
+            if ((temperatura >= 98.6) && (temperatura < 212)) cadena ="Temperatura del cuerpo humano";
+            if ((temperatura >= 77) && (temperatura < 98.6)) cadena ="Temperatura ambiente";
+            if ((temperatura >= 32) && (temperatura < 77)) cadena ="Punto de congelación del agua";
+            if ((temperatura >= -459.58) && (temperatura < 32)) cadena ="Cero absoluto";
+        EscriData('Zona2', cadena);
+    } 
+    </script>
+
+    <h2>Conversor de temperaturas</h2>
+        <input type="text" name="tempEntrada" id="tempEntrada">
+        <input type="button" value="Pasar a Fahrenheit" onClick="paFahrenheint()"><br>
+    <div id="Zona1"></div>
+    <div id="Zona2"></div>
+    <div id="Zona3"></div> 
+<br/><br/>
+
+    <script>
+//ejercicio 2
+        
+    function calcularPorcentajes(){
+        let num = parseInt(document.getElementById("resultado").value);
+        var num1
+
+        if(num < 500){
+                num1 = num + (num * 0.5)
+        
+        }else{
+                num1 = num - (num * 0.07)
+        
+        }
+        document.getElementById("valor").innerHTML = num1
+    }
+
+    </script>
+
+    <h2>Calcular Porcentajes</h2>
+        <input type="text" name="resultado" id="resultado">
+        <input type="button" value="Calcular" onClick="calcularPorcentajes()"> 
+
+        <h4>El valor es</h4>
+        <p id="porcent"></p>
+        <p id="valor"></p>
+
+<br/><br/>
+
+    <script>
+//ejercicio 3
+
+    function generarTablaHTML(){
+        var i, j
+
+        var numFilas = document.getElementById("numFilas").value;
+        var numColum = document.getElementById("numColum").value;
+    
+        var res = numFilas * numColum;
+        document.write("<table border>")
+        
+        for(i = 0; i < numFilas; i++){
+            document.write("<tr>");
+
+                for(j = 0; j < numColum; j++){
+                    document.write("<td>");
+                    document.write(res);
+                    res --;
+                    document.write("</td>")    
+            }            
+                    document.write("</tr>")
+        }
+            document.write("</table>")
+    }
+    
+    
+    </script>
+
+    <h2>Crear Tabla</h2>
+
+    <input type="number" id="numFilas" min="1" value="1"><br/>
+    <input type="number" id="numColum" min="1" value="1"><br/>
+    <button onclick="generarTablaHTML()">Generar Tabla</button>
+<br/>
+    
+    
+
+</body>
+</html>
